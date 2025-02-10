@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sangguniang Kabataan</title>
+    <title>SK BARANGAY BANGON 2025</title>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -127,7 +127,7 @@
 
         .sk-title {
             color: #003366;
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: bold;
             margin: 1rem 0;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
@@ -157,6 +157,15 @@
             cursor: pointer;
             color: #003366;
             order: 3;
+        }
+
+        .menu-toggle .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #003366;
+            margin: 5px auto;
+            transition: all 0.3s;
         }
 
         .about-section {
@@ -360,6 +369,17 @@
             line-height: 1.8;
             text-align: justify;
             font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .mission-card, .vision-card {
+                width: 100%; /* Make cards full width on small screens */
+                margin-bottom: 1rem; /* Add space between cards */
+                padding: 1rem; /* Adjust padding for better spacing */
+            }
+            .mission-vision-container {
+                grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+            }
         }
 
         .members-section {
@@ -569,6 +589,21 @@
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .ppas-categories {
+                display: flex;
+                flex-direction: column; /* Stack buttons vertically */
+                align-items: center; /* Center buttons horizontally */
+                margin-bottom: 1rem; /* Add space below */
+            }
+            .category-btn {
+                margin: 0.5rem 0; /* Add vertical spacing between buttons */
+                width: 100%; /* Make buttons full width */
+                font-size: 0.8rem; /* Reduce font size for mobile */
+                padding: 0.5rem; /* Reduce padding for smaller buttons */
+            }
         }
 
         .ppas-grid {
@@ -912,6 +947,152 @@
                 max-width: 400px;
             }
         }
+        
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #003366;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 4rem;
+                right: 1rem;
+                background: #fff;
+                padding: 1rem;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links a {
+                display: block;
+                margin-bottom: 1rem;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .menu.active {
+                display: flex;
+            }
+        }
+        
+        /* Default styles for the hamburger menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .menu.active {
+                display: flex;
+            }
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: white;
+                width: 100%;
+                z-index: 1;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        
+        /* Default styles for the hamburger menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .menu.active {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-title {
+                font-size: 2rem; /* Adjust font size for mobile */
+            }
+            .about-content {
+                font-size: 1rem; /* Adjust font size for mobile */
+                padding: 1rem; /* Add padding for better spacing */
+            }
+            .about-container {
+                padding: 1rem; /* Add padding for mobile view */
+            }
+            .about-card {
+                width: 100%; /* Make cards full width on small screens */
+                margin-bottom: 1rem; /* Add space between cards */
+                padding: 1rem; /* Adjust padding for better spacing */
+            }
+            .about-content {
+                grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .ppas-grid {
+                grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+                gap: 1rem; /* Adjust gap between cards */
+            }
+            .ppa-card {
+                padding: 1rem; /* Adjust padding for better spacing */
+            }
+        }
     </style>
 </head>
 <body>
@@ -928,12 +1109,10 @@
                 <a href="#gallery"><i class="fas fa-images"></i>GALLERY</a>
                 <a href="#contact"><i class="fas fa-envelope"></i>CONTACT</a>
             </div>
-            <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=100067556198926" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/sk_bangon_pagsanghan/" target="_blank" title="TikTok"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:skbangonpagsanghansamar@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+        
+            <div class="hamburger" onclick="toggleMenu()">
+                &#9776;
             </div>
-            <div class="menu-toggle">☰</div>
         </div>
     </nav>
 
@@ -1462,7 +1641,15 @@
                         <p class="ppa-description">Showcase of local youth talents through performances and entertainment.</p>
                         <div class="ppa-stats">
                             <div class="ppa-stat">
-                                <i class="fas fa-theater-masks"></i>
+                                <i class="fas fa-theater-masks"></i><nav>
+                                    <div class="nav-links">
+                                        <a href="#home">Home</a>
+                                        <a href="#gallery">Gallery</a>
+                                        <a href="#contact">Contact</a>
+                                    </div>
+                                    <div class="hamburger" onclick="toggleMenu()">
+                                        &#9776; <!-- Hamburger icon -->
+                                    </div>
                                 <span>Performance</span>
                             </div>
                             <div class="ppa-stat">
@@ -1823,8 +2010,11 @@
 
     <script>
         // Menu Toggle
-        document.querySelector('.menu-toggle').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
+        const menuToggle = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
 
         // PPA's Category Filter
@@ -1987,6 +2177,44 @@
                 if (video) video.pause();
                 modal.classList.remove('active');
             }
+        });
+        
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+    <style>
+        /* Default styles for the hamburger menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .menu.active {
+                display: flex;
+            }
+        }
+    </style>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
         });
     </script>
 </body>
