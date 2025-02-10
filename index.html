@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sangguniang Kabataan</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('images/cover3.png') center/cover fixed no-repeat;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(173, 216, 230, 0.7) 0%, rgba(135, 206, 235, 0.7) 100%);
+            z-index: -1;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 0.5rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #003366;
+            font-weight: bold;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a i {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        .nav-links a:hover i {
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-left: 2rem;
+        }
+
+        .social-links a {
+            color: #003366;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: center;
+            padding-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .tagline {
+            color: #003366;
+            font-size: 1.0rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            margin-top: 1rem;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .sk-title {
+            color: #003366;
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .location {
+            color: #003366;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .center-logo {
+            width: 300px;
+            height: 300px;
+            margin: 2rem 0;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #003366;
+            order: 3;
+        }
+
+        .about-section {
+            position: relative;
+            padding: 5rem 0;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: rgba(0, 33, 71, 0.05);
+            clip-path: polygon(0 0, 100% 10%, 100% 90%, 0% 100%);
+            z-index: 0;
+        }
+
+        .about-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-title {
+            text-align: center;
+            color: #002147;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            position: relative;
+        }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #002147, #0066cc);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #002147, #0066cc);
+            border-radius: 2px 0 0 2px;
+        }
+
+        .about-card h2 {
+            color: #002147;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .about-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #002147, #0066cc);
+            border-radius: 2px;
+        }
+
+        .about-card p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .about-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-list li {
+            color: #333;
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .about-list li::before {
+            content: "→";
+            color: #0066cc;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .about-list li:hover::before {
+            transform: translateX(5px);
+        }
+
+        .mission-vision-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .mission-card, .vision-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .mission-card::before, .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #002147, #0066cc);
+        }
+
+        .mission-card h3, .vision-card h3 {
+            color: #002147;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .mission-card h3::after, .vision-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #002147, #0066cc);
+            border-radius: 2px;
+        }
+
+        .mission-card p, .vision-card p {
+            color: #333;
+            line-height: 1.8;
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        .members-section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .members-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .members-title {
+            text-align: center;
+            color: #002147;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .members-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 0 50px;
+            margin: 0 -1rem;
+        }
+
+        .members-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .member-card {
+            min-width: 280px;
+            max-width: 280px;
+            background: rgba(0, 33, 71, 0.9);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            flex: 0 0 auto;
+            margin: 0 0.5rem;
+        }
+
+        .member-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 10px;
+            margin: 0 auto 1.5rem;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .member-name {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .member-position {
+            color: #66ccff;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .member-social a {
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.3s, color 0.3s;
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .member-social a:hover {
+            transform: scale(1.2);
+            color: #66ccff;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 33, 71, 0.9);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 2;
+            transition: background 0.3s;
+        }
+
+        .carousel-button:hover {
+            background: #002147;
+        }
+
+        .carousel-button.prev {
+            left: 0;
+        }
+
+        .carousel-button.next {
+            right: 0;
+        }
+
+        .ppas-section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ppas-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: rgba(0, 33, 71, 0.05);
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
+            z-index: 0;
+        }
+
+        .ppas-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ppas-title {
+            text-align: center;
+            color: #002147;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            position: relative;
+        }
+
+        .ppas-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #002147, #0066cc);
+            border-radius: 2px;
+        }
+
+        .ppas-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            color: #002147;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background: #002147;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .ppas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ppa-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .ppa-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .ppa-image {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ppa-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .ppa-card:hover .ppa-image img {
+            transform: scale(1.1);
+        }
+
+        .ppa-content {
+            padding: 1.5rem;
+        }
+
+        .ppa-date {
+            color: #0066cc;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ppa-date i {
+            font-size: 1rem;
+        }
+
+        .ppa-title {
+            color: #002147;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .ppa-description {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .ppa-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .ppa-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ppa-stat i {
+            color: #0066cc;
+        }
+
+        .ppa-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .ppa-tag {
+            background: rgba(0, 102, 204, 0.1);
+            color: #0066cc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Simple Gallery Styles */
+        .gallery-section {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-header h2 {
+            font-size: 2.5rem;
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-media {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 16px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 3px;
+        }
+
+        /* Video Label Styles */
+        .video-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .video-label i {
+            font-size: 0.9rem;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .modal-content img,
+        .modal-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Contact Section Styles */
+        .contact-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #022b53 0%, #004080 100%);
+            color: white;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-icon i {
+            font-size: 1.5rem;
+            color: #003366;
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: white;
+            color: #003366;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            background: #003366;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="SK Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#home"><i class="fas fa-home"></i>HOME</a>
+                <a href="#about"><i class="fas fa-info-circle"></i>ABOUT</a>
+                <a href="#members"><i class="fas fa-users"></i>SK MEMBERS</a>
+                <a href="#ppas"><i class="fas fa-project-diagram"></i>PPA'S</a>
+                <a href="#gallery"><i class="fas fa-images"></i>GALLERY</a>
+                <a href="#contact"><i class="fas fa-envelope"></i>CONTACT</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100067556198926" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/sk_bangon_pagsanghan/" target="_blank" title="TikTok"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:skbangonpagsanghansamar@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="menu-toggle">☰</div>
+        </div>
+    </nav>
+
+    <main id="home" class="hero">
+        <div class="hero-content">
+            <div class="tagline">LEADING WITH PURPOSE, SERVING WITH PASSION</div>
+            <img src="images/logo.png" alt="SK Logo" class="center-logo">
+            <div class="sk-title">SANGGUNIANG KABATAAN</div>
+            <div class="location">BARANGAY BANGON, PAGSANGHAN, SAMAR</div>
+            <button id="profiling-button" onclick="window.open('kk_profiling.html', '_blank')">KK PROFILING FORM</button>
+        </div>
+    </main>
+
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <h1 class="about-title">About Us</h1>
+            <div class="about-content">
+                <div class="about-card">
+                    <h2>Who We Are</h2>
+                    <p>The Sangguniang Kabataan (SK) Barangay Bangon, Pagsanghan, Samar is a youth-led council dedicated to empowering the young people of our community. As the official governing body for the youth, we strive to create programs, initiatives, and opportunities that promote leadership, community engagement, and positive change.</p>
+                </div>
+                <div class="about-card">
+                    <h2>What We Do</h2>
+                    <ul class="about-list">
+                        <li>Youth Leadership & Development – Training and workshops to hone leadership and advocacy skills.</li>
+                        <li>Community Projects – Organizing outreach programs, clean-up drives, and civic engagement initiatives.</li>
+                        <li>Sports & Recreation – Hosting tournaments and wellness activities to promote health and teamwork.</li>
+                        <li>Education & Skills Training – Scholarships, livelihood programs, and digital literacy campaigns.</li>
+                        <li>Environmental & Social Awareness – Climate action projects, youth forums, and awareness campaigns on relevant issues.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mission-vision-container">
+                <div class="mission-card">
+                    <h3>Our Mission</h3>
+                    <p>To represent, serve, and empower the youth by fostering active participation in governance, social development, and community-building activities. We aim to be the voice of young individuals in decision-making processes and provide platforms for growth, learning, and leadership.</p>
+                </div>
+                <div class="vision-card">
+                    <h3>Our Vision</h3>
+                    <p>A progressive and empowered youth community that actively contributes to local development, social responsibility, and nation-building.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="members" class="members-section">
+        <div class="members-container">
+            <h1 class="members-title">SK Members</h1>
+            <div class="members-carousel">
+                <button class="carousel-button prev">❮</button>
+                <div class="members-slider">
+                    <div class="member-card">
+                        <img src="images/sk1.png" alt="SK Chairperson" class="member-image">
+                        <h3 class="member-name">HON. BENJAMIN R. PALIVINO</h3>
+                        <p class="member-position">SK Chairperson</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/benjamin.palivino.5" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/mr.benj_palivino/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <img src="images/sk.png" alt="SK Treasurer" class="member-image">
+                        <h3 class="member-name">Bengie B. Arcagua</h3>
+                        <p class="member-position">SK Treasurer</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/bengiebotaarcagua17/" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/bhen_ghie/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <img src="images/jelyn.png" alt="SK Secretary" class="member-image">
+                        <h3 class="member-name">JELYN G. VILLOCERO</h3>
+                        <p class="member-position">SK Secretary</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/jelyn.galvillocero" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/jelyn_vllcr/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <img src="images/dy.png" alt="SK Member" class="member-image">
+                        <h3 class="member-name">MELDY R. MACAWILI</h3>
+                        <p class="member-position">SK Member</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/meldy.macawili.50" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <img src="images/el.png" alt="SK Member" class="member-image">
+                        <h3 class="member-name">JOBBELE LOURDES C. TOMALBACAD</h3>
+                        <p class="member-position">SK Member</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/jobellelourdes.tomalabcad" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <img src="images/lang.png" alt="SK Member" class="member-image">
+                        <h3 class="member-name">MARIAFEL P. AGRAVANTE</h3>
+                        <p class="member-position">SK Member</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/mriaflagvnte" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/notmareyaah/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <img src="images/deb.png" alt="SK Member" class="member-image">
+                        <h3 class="member-name">JOHN DAVE G. CACHERO</h3>
+                        <p class="member-position">SK Member</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/Dave.gayondato.1" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/johnnyydavee/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <img src="images/kai.png" alt="SK Member" class="member-image">
+                        <h3 class="member-name">KAILA MARIE V. VILLOCERO</h3>
+                        <p class="member-position">SK Member</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/kailamarie.villocero" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/prtty_khaylie/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <img src="images/soy.png" alt="SK Member" class="member-image">
+                        <h3 class="member-name">RENZO E. DELARMENTE</h3>
+                        <p class="member-position">SK Member</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/renzo.delarmente.5" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <img src="images/nis.png" alt="SK Member" class="member-image">
+                        <h3 class="member-name">DENNIS GONZAGA</h3>
+                        <p class="member-position">SK Member</p>
+                        <div class="member-social">
+                            <a href="https://www.facebook.com/gonzaga.dennis.33" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/niss_gonzaga/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button next">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="ppas" class="ppas-section">
+        <div class="ppas-container">
+            <h1 class="ppas-title">Programs, Projects & Activities</h1>
+            
+            <div class="ppas-categories">
+                <button class="category-btn active">All</button>
+                <button class="category-btn">Documentation</button>
+                <button class="category-btn">Meetings</button>
+                <button class="category-btn">Development</button>
+                <button class="category-btn">Community</button>
+                <button class="category-btn">Sports</button>
+                <button class="category-btn">Events</button>
+            </div>
+
+            <div class="ppas-grid">
+                <!-- Signed Resolution -->
+                <div class="ppa-card" data-category="documentation">
+                    <div class="ppa-image">
+                        <img src="images/1.png" alt="Signed Resolution">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            January 2025
+                        </div>
+                        <h3 class="ppa-title">Signed Resolution</h3>
+                        <p class="ppa-description">Official documentation of SK resolutions and policies for youth development initiatives.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-file-signature"></i>
+                                <span>Documentation</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>SK Office</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Official</span>
+                            <span class="ppa-tag">Documentation</span>
+                            <span class="ppa-tag">Policy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meetings Conducted -->
+                <div class="ppa-card" data-category="meetings">
+                    <div class="ppa-image">
+                        <img src="images/2.png" alt="SK Meetings">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Monthly
+                        </div>
+                        <h3 class="ppa-title">Regular SK Meetings</h3>
+                        <p class="ppa-description">Regular coordination meetings to discuss youth programs, concerns, and initiatives.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>SK Council</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-clock"></i>
+                                <span>Monthly</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Planning</span>
+                            <span class="ppa-tag">Coordination</span>
+                            <span class="ppa-tag">Regular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training and Seminars -->
+                <div class="ppa-card" data-category="development">
+                    <div class="ppa-image">
+                        <img src="images/3.png" alt="Training Programs">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Quarterly
+                        </div>
+                        <h3 class="ppa-title">Training and Seminars</h3>
+                        <p class="ppa-description">Capacity building programs for youth development and leadership skills enhancement.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                <span>Various Topics</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>Youth Members</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Education</span>
+                            <span class="ppa-tag">Development</span>
+                            <span class="ppa-tag">Skills</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KK Profiling -->
+                <div class="ppa-card" data-category="documentation">
+                    <div class="ppa-image">
+                        <img src="images/4.png" alt="KK Profiling">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Ongoing
+                        </div>
+                        <h3 class="ppa-title">KK Profiling</h3>
+                        <button id="profiling-button" onclick="window.open('kk_profiling.html', '_blank')">KK PROFILING FORM</button>
+                        <p class="ppa-description">Comprehensive profiling of Katipunan ng Kabataan members for better program targeting.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-database"></i>
+                                <span>Data Collection</span>
+                            </div>
+                            
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>Youth Registry</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Database</span>
+                            <span class="ppa-tag">Youth</span>
+                            <span class="ppa-tag">Registry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KK Assembly -->
+                <div class="ppa-card" data-category="meetings">
+                    <div class="ppa-image">
+                        <img src="images/5.png" alt="KK Assembly">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Bi-annual
+                        </div>
+                        <h3 class="ppa-title">KK Assembly</h3>
+                        <p class="ppa-description">General assembly of Katipunan ng Kabataan members for updates and planning.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>All Members</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-microphone"></i>
+                                <span>Updates</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Assembly</span>
+                            <span class="ppa-tag">Planning</span>
+                            <span class="ppa-tag">Coordination</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Building -->
+                <div class="ppa-card" data-category="development">
+                    <div class="ppa-image">
+                        <img src="images/6.png" alt="Team Building">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Annual
+                        </div>
+                        <h3 class="ppa-title">Team Building</h3>
+                        <p class="ppa-description">Activities designed to strengthen bonds and improve collaboration among SK members.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-hands-helping"></i>
+                                <span>Team Activities</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>SK Members</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Teamwork</span>
+                            <span class="ppa-tag">Development</span>
+                            <span class="ppa-tag">Bonding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutok Kaalaman -->
+                <div class="ppa-card" data-category="development">
+                    <div class="ppa-image">
+                        <img src="images/7.png" alt="Tutok Kaalaman">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Weekly
+                        </div>
+                        <h3 class="ppa-title">Tutok Kaalaman</h3>
+                        <p class="ppa-description">Educational support program providing tutoring and academic assistance to youth.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-book"></i>
+                                <span>Education</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>Students</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Education</span>
+                            <span class="ppa-tag">Tutoring</span>
+                            <span class="ppa-tag">Academic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clean-up Drive -->
+                <div class="ppa-card" data-category="community">
+                    <div class="ppa-image">
+                        <img src="images/8.png" alt="Clean-up Drive">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Monthly
+                        </div>
+                        <h3 class="ppa-title">Clean-up Drive</h3>
+                        <p class="ppa-description">Regular community clean-up activities to promote environmental awareness.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-broom"></i>
+                                <span>Environment</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>Volunteers</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Environment</span>
+                            <span class="ppa-tag">Community</span>
+                            <span class="ppa-tag">Cleanliness</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Sports -->
+                <div class="ppa-card" data-category="sports">
+                    <div class="ppa-image">
+                        <img src="images/9.png" alt="E-Sports Tournament">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Seasonal
+                        </div>
+                        <h3 class="ppa-title">E-Sports Tournament</h3>
+                        <p class="ppa-description">Competitive gaming events fostering digital sportsmanship and youth engagement.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-gamepad"></i>
+                                <span>Gaming</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>Players</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Gaming</span>
+                            <span class="ppa-tag">Competition</span>
+                            <span class="ppa-tag">Digital</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summer Festival -->
+                <div class="ppa-card" data-category="events">
+                    <div class="ppa-image">
+                        <img src="images/10.png" alt="Summer Festival">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Summer
+                        </div>
+                        <h3 class="ppa-title">Summer Festival</h3>
+                        <p class="ppa-description">Annual summer celebration featuring various youth activities and performances.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-sun"></i>
+                                <span>Festival</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Community</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Summer</span>
+                            <span class="ppa-tag">Festival</span>
+                            <span class="ppa-tag">Entertainment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tree Planting -->
+                <div class="ppa-card" data-category="community">
+                    <div class="ppa-image">
+                        <img src="images/11.png" alt="Tree Planting">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Quarterly
+                        </div>
+                        <h3 class="ppa-title">Tree Planting</h3>
+                        <p class="ppa-description">Environmental conservation initiative to promote green spaces and sustainability.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-tree"></i>
+                                <span>Environment</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>Volunteers</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Environment</span>
+                            <span class="ppa-tag">Conservation</span>
+                            <span class="ppa-tag">Green</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Variety Show -->
+                <div class="ppa-card" data-category="events">
+                    <div class="ppa-image">
+                        <img src="images/12.png" alt="Variety Show">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Special Event
+                        </div>
+                        <h3 class="ppa-title">Variety Show</h3>
+                        <p class="ppa-description">Showcase of local youth talents through performances and entertainment.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-theater-masks"></i>
+                                <span>Performance</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-star"></i>
+                                <span>Talents</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Entertainment</span>
+                            <span class="ppa-tag">Talent</span>
+                            <span class="ppa-tag">Arts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- School Supplies Distribution -->
+                <div class="ppa-card" data-category="community">
+                    <div class="ppa-image">
+                        <img src="images/13.png" alt="School Supplies Distribution">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            School Opening
+                        </div>
+                        <h3 class="ppa-title">School Supplies Distribution</h3>
+                        <p class="ppa-description">Support program providing essential school materials to youth in need.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-book"></i>
+                                <span>Education</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <span>Support</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Education</span>
+                            <span class="ppa-tag">Support</span>
+                            <span class="ppa-tag">Community</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linggo ng Kabataan -->
+                <div class="ppa-card" data-category="events">
+                    <div class="ppa-image">
+                        <img src="images/14.png" alt="Linggo ng Kabataan">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Annual
+                        </div>
+                        <h3 class="ppa-title">Linggo ng Kabataan</h3>
+                        <p class="ppa-description">Week-long celebration of youth achievements and activities.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-calendar-week"></i>
+                                <span>Celebration</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>Youth Week</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Youth</span>
+                            <span class="ppa-tag">Celebration</span>
+                            <span class="ppa-tag">Annual</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basketball Tournament -->
+                <div class="ppa-card" data-category="sports">
+                    <div class="ppa-image">
+                        <img src="images/15.png" alt="Basketball Tournament">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Seasonal
+                        </div>
+                        <h3 class="ppa-title">Basketball Tournament</h3>
+                        <p class="ppa-description">Competitive basketball league promoting sportsmanship and physical fitness.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-basketball-ball"></i>
+                                <span>Sports</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-trophy"></i>
+                                <span>Tournament</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Sports</span>
+                            <span class="ppa-tag">Basketball</span>
+                            <span class="ppa-tag">Competition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volleyball Tournament -->
+                <div class="ppa-card" data-category="sports">
+                    <div class="ppa-image">
+                        <img src="images/16.png" alt="Volleyball Tournament">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Seasonal
+                        </div>
+                        <h3 class="ppa-title">Volleyball Tournament</h3>
+                        <p class="ppa-description">Community volleyball competition fostering teamwork and athletic excellence.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-volleyball-ball"></i>
+                                <span>Sports</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-trophy"></i>
+                                <span>Tournament</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Sports</span>
+                            <span class="ppa-tag">Volleyball</span>
+                            <span class="ppa-tag">Competition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Palagud Festival -->
+                <div class="ppa-card" data-category="events">
+                    <div class="ppa-image">
+                        <img src="images/17.png" alt="Palagud Festival">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            Annual
+                        </div>
+                        <h3 class="ppa-title">Palagud Festival</h3>
+                        <p class="ppa-description">Cultural celebration showcasing local traditions and community unity.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-music"></i>
+                                <span>Festival</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-users"></i>
+                                <span>Community</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Culture</span>
+                            <span class="ppa-tag">Festival</span>
+                            <span class="ppa-tag">Tradition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Christmas Party -->
+                <div class="ppa-card" data-category="events">
+                    <div class="ppa-image">
+                        <img src="images/18.png" alt="Christmas Party">
+                    </div>
+                    <div class="ppa-content">
+                        <div class="ppa-date">
+                            <i class="far fa-calendar-alt"></i>
+                            December
+                        </div>
+                        <h3 class="ppa-title">Christmas Party</h3>
+                        <p class="ppa-description">Annual holiday celebration bringing together youth for festive activities.</p>
+                        <div class="ppa-stats">
+                            <div class="ppa-stat">
+                                <i class="fas fa-gift"></i>
+                                <span>Celebration</span>
+                            </div>
+                            <div class="ppa-stat">
+                                <i class="fas fa-star"></i>
+                                <span>Holiday</span>
+                            </div>
+                        </div>
+                        <div class="ppa-tags">
+                            <span class="ppa-tag">Christmas</span>
+                            <span class="ppa-tag">Celebration</span>
+                            <span class="ppa-tag">Holiday</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-header">
+            <h2>GALLERY</h2>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- Photos -->
+            <div class="gallery-item">
+                <img src="images/a.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+
+            <!-- Video -->
+            <div class="gallery-item">
+                <span class="video-label">
+                    <i class="fas fa-video"></i> Video
+                </span>
+                <video poster="images/1111.jpg" class="gallery-media" loading="lazy">
+                    <source src="images/444.mp4" type="video/mp4">
+                </video>
+                <div class="play-button"></div>
+            </div>
+
+            <!-- More Photos -->
+            <div class="gallery-item">
+                <img src="images/b.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/c.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+
+            <!-- Another Video -->
+            <div class="gallery-item">
+                <span class="video-label">
+                    <i class="fas fa-video"></i> Video
+                </span>
+                <video poster="images/video-thumb2.jpg" class="gallery-media" loading="lazy">
+                    <source src="images/111.mp4" type="video/mp4">
+                </video>
+                <div class="play-button"></div>
+            </div>
+
+            <!-- More Photos -->
+            <div class="gallery-item">
+                <img src="images/d.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+            <!-- Another Video -->
+            <div class="gallery-item">
+                <span class="video-label">
+                    <i class="fas fa-video"></i> Video
+                </span>
+                <video poster="images/video-thumb2.jpg" class="gallery-media" loading="lazy">
+                    <source src="images/222.mp4" type="video/mp4">
+                </video>
+                <div class="play-button"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/e.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/f.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/g.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+            <!-- Another Video -->
+            <div class="gallery-item">
+                <span class="video-label">
+                    <i class="fas fa-video"></i> Video
+                </span>
+                <video poster="images/video-thumb2.jpg" class="gallery-media" loading="lazy">
+                    <source src="images/333.mp4" type="video/mp4">
+                </video>
+                <div class="play-button"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/h.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/i.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/k.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/j.jpg" alt="SK Event" class="gallery-media" loading="lazy">
+            </div>
+        </div>
+        
+
+        <!-- Modal for fullscreen view -->
+        <div class="modal">
+            <span class="modal-close">&times;</span>
+            <div class="modal-content">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-header">
+            <h2>GET IN TOUCH</h2>
+            <p>Connect with us through any of these platforms</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Facebook -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <h3 class="contact-title">Facebook</h3>
+                <p class="contact-info">Follow us on Facebook for updates and events</p>
+                <a href="https://www.facebook.com/profile.php?id=100067556198926" target="_blank" class="contact-link">
+                    <i class="fab fa-facebook-f"></i> SK Bangon Pagsanghan
+                </a>
+            </div>
+
+            <!-- Instagram -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <h3 class="contact-title">Instagram</h3>
+                <p class="contact-info">Check out our latest photos and stories</p>
+                <a href="https://www.instagram.com/sk_bangon_pagsanghan/" target="_blank" class="contact-link">
+                    <i class="fab fa-instagram"></i> @sk_bangon_pagsanghan
+                </a>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="far fa-envelope"></i>
+                </div>
+                <h3 class="contact-title">Email</h3>
+                <p class="contact-info">Send us your inquiries anytime</p>
+                <a href="mailto:skbangonpagsanghansamar@gmail.com" class="contact-link">
+                    <i class="far fa-envelope"></i> skbangonpagsanghansamar@gmail.com
+                </a>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3 class="contact-title">Phone</h3>
+                <p class="contact-info">Call us during office hours</p>
+                <a href="tel:+639686135526" class="contact-link">
+                    <i class="fas fa-phone-alt"></i> +63 9051572168
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // PPA's Category Filter
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const ppaCards = document.querySelectorAll('.ppa-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const selectedCategory = button.textContent.toLowerCase();
+
+                ppaCards.forEach(card => {
+                    // Get the category from the card's data attribute
+                    const cardCategory = card.dataset.category;
+                    
+                    // Show all cards if "All" is selected, otherwise show only cards matching the selected category
+                    if (selectedCategory === 'all') {
+                        card.style.display = 'block';
+                        // Add animation class
+                        card.classList.add('fade-in');
+                    } else {
+                        if (cardCategory === selectedCategory) {
+                            card.style.display = 'block';
+                            // Add animation class
+                            card.classList.add('fade-in');
+                        } else {
+                            card.style.display = 'none';
+                            // Remove animation class
+                            card.classList.remove('fade-in');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Add animation class
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .fade-in {
+                animation: fadeIn 0.5s ease forwards;
+            }
+
+            .ppa-card {
+                opacity: 0;
+                animation: fadeIn 0.5s ease forwards;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Members Carousel
+        const slider = document.querySelector('.members-slider');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+        const cards = document.querySelectorAll('.member-card');
+        const cardWidth = cards[0].offsetWidth + 20; // Including margin
+        let currentPosition = 0;
+        let autoSlideInterval;
+
+        function updateSliderPosition() {
+            slider.style.transform = `translateX(${currentPosition}px)`;
+        }
+
+        function moveNext() {
+            currentPosition -= cardWidth;
+            if (currentPosition < -(cardWidth * (cards.length - 3))) {
+                currentPosition = 0;
+            }
+            updateSliderPosition();
+        }
+
+        function movePrev() {
+            currentPosition += cardWidth;
+            if (currentPosition > 0) {
+                currentPosition = -(cardWidth * (cards.length - 3));
+            }
+            updateSliderPosition();
+        }
+
+        // Auto slide
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(moveNext, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Event listeners
+        nextButton.addEventListener('click', () => {
+            moveNext();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+
+        prevButton.addEventListener('click', () => {
+            movePrev();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+
+        // Start auto slide
+        startAutoSlide();
+
+        // Stop auto slide when hovering over the carousel
+        document.querySelector('.members-carousel').addEventListener('mouseenter', stopAutoSlide);
+        document.querySelector('.members-carousel').addEventListener('mouseleave', startAutoSlide);
+
+        // Gallery Modal Functionality
+        const modal = document.querySelector('.modal');
+        const modalContent = document.querySelector('.modal-content');
+        const modalClose = document.querySelector('.modal-close');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const isVideo = item.querySelector('video');
+                
+                if (isVideo) {
+                    const video = isVideo.cloneNode(true);
+                    video.controls = true;
+                    modalContent.innerHTML = '';
+                    modalContent.appendChild(video);
+                    video.play();
+                } else {
+                    const img = item.querySelector('img');
+                    const newImg = document.createElement('img');
+                    newImg.src = img.src;
+                    modalContent.innerHTML = '';
+                    modalContent.appendChild(newImg);
+                }
+                
+                modal.classList.add('active');
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            const video = modalContent.querySelector('video');
+            if (video) video.pause();
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                const video = modalContent.querySelector('video');
+                if (video) video.pause();
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
